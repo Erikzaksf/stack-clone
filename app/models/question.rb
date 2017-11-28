@@ -5,5 +5,5 @@ class Question < ActiveRecord::Base
   validates :user, :title, :content, presence: true
 
   scope :recent, -> { order(created_at: :desc) }
-
+  scope :today_total, -> { where("created_at >=?", Time.now.beginning_of_day).length }
 end

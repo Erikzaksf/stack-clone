@@ -16,5 +16,13 @@ describe Question do
       expect(Question.all).to eq ([question_one, question_two, question_three])
     end
   end
+  describe ".today_total" do
+    it "returns number of questions created today" do
+      question_one = FactoryBot.create(:question)
+      question_two = FactoryBot.create(:question, user: question_one.user)
+      question_three = FactoryBot.create(:question, user: question_one.user)
+      expect(Question.today_total).to eq (3)
+    end
+  end
 
 end
