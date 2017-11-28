@@ -39,14 +39,14 @@ class QuestionsController < ApplicationController
     if @question.user == current_user
       if @question.update(question_params)
         flash[:notice] = "Question updated successfully!"
-        redirect_to question_path(question)
+        redirect_to question_path(@question)
       else
         flash[:alert] = "Something went wrong!"
         render :edit
       end
     else
       flash[:alert] = "You aren't authorized to do that."
-      redirect_to question_path(question)
+      redirect_to question_path(@question)
     end
   end
 

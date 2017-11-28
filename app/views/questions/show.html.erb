@@ -1,5 +1,5 @@
 <h2><%= @question.title %></h2>
-<h4>Asked by <%= @question.user.name %></h4>
+<h4>Asked by <%= @question.user.user_name %></h4>
 <p><%= @question.content %></p>
 
 <% if current_user == @question.user %>
