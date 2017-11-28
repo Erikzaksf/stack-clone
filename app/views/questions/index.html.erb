@@ -1,0 +1,16 @@
+<h1>Questions</h1>
+
+<% if current_user %>
+  <h5><%= link_to "Ask a Question", new_question_path %></h5>
+<% else %>
+  <h5><%= link_to "Sign in", '/signin' %> to ask a question</h5>
+<% end %>
+<% if @questions.any? %>
+  <% @questions.each do |question| %>
+    <div class="question-title">
+      <h3><%= question.title %></h3>
+    </div>
+  <% end %>
+<% else %>
+  <h3>There are no saved questions.</h3>
+<% end %>
