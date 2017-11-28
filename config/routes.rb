@@ -9,5 +9,4 @@ Rails.application.routes.draw do
   get '/signout' => 'sessions#destroy'
 
   resources :questions
-
 end

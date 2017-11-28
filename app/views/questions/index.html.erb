@@ -5,6 +5,7 @@
 <% else %>
   <h5><%= link_to "Sign in", '/signin' %> to ask a question</h5>
 <% end %>
+
 <% if @questions.any? %>
   <% @questions.each do |question| %>
     <div class="question-title">
