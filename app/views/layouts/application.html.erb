@@ -9,14 +9,30 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <%= current_user.user_name %> | <%= link_to "Sign out", signout_path %>
-    <% else %>
-      <%= link_to "Sign up", signup_path %> | <%= link_to "Sign in", signin_path %>
-    <% end %>
+    <div class="container">
+      <% if current_user %>
+        <%= current_user.user_name %> | <%= link_to "Sign out", signout_path %>
+      <% else %>
+        <%= link_to "Sign up", signup_path %> | <%= link_to "Sign in", signin_path %>
+      <% end %>
 
-    <%= flash[:alert] %>
-    <%= flash[:notice] %>
-    <%= yield %>
+      <div class="container">
+        <% if flash[:alert] %>
+          <div class="alert alert-danger">
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
+
+        <% if flash[:notice] %>
+          <div class="alert alert-info">
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+        
+        <%= yield %>
+      </div>
+
+    </div>
+
   </body>
 </html>

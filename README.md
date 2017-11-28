@@ -8,6 +8,9 @@
   * Edit questions
   * Delete questions
 * Logged out User can only read questions
+* Answers:
+  * Logged in Users can create/edit/read/delete answers
+  * Logged out users cannot see/interact with answers
 
 ### To Do:
 * Votes:
@@ -16,8 +19,6 @@
   * Users can vote on questions
   * Users can vote on answers
 * Answers:
-  * Logged in Users can create/edit/read/delete answers
-  * Logged out users cannot see/interact with answers
   * Best answer
 * Scopes
   * Sort questions by most recent
