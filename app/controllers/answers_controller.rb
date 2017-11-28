@@ -36,8 +36,21 @@ class AnswersController < ApplicationController
       end
     else
       flash[:alert] = "You aren't authorized to do that."
+      flash[:alertend] = "You aren't authorized to do that."
       redirect_to question_path(@question)
     end
+  end
+
+  def destroy
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.find(params[:id])
+    if current_user == @answer.user
+      @answer.destroy
+      flash[:notice] = "Answer deleted successfully!"
+    else
+      flash[:alert] = "You aren't authorized to do that."
+    end
+    redirect_to question_path(@question)
   end
 
   private

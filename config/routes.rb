@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/signout' => 'sessions#destroy'
 
   resources :questions do
-    resources :answers, only: [:create, :edit, :update, :delete]
+    resources :answers, only: [:create, :edit, :update, :destroy]
   end
 
 end
