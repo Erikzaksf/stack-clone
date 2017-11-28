@@ -36,7 +36,6 @@ class AnswersController < ApplicationController
       end
     else
       flash[:alert] = "You aren't authorized to do that."
-      flash[:alertend] = "You aren't authorized to do that."
       redirect_to question_path(@question)
     end
   end

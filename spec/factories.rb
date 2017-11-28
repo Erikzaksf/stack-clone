@@ -17,4 +17,10 @@ FactoryBot.define do
     association :user, factory: :user, user_name: "Test", email: "test@test.com"
     is_upvote(true)
   end
+
+  factory(:answer) do
+    question
+    association :user, factory: :user, user_name: "Test", email: "test@test.com"
+    content("Example answer to a question.")
+  end
 end
