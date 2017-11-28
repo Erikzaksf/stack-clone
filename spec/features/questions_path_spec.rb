@@ -99,4 +99,17 @@ describe "the question management path" do
     Capybara.current_session.driver.submit :delete, question_path(question), nil
     expect(page).to have_content("You aren't authorized to do that.")
   end
+
+  it "deletes all answers associated with a question when question is deleted" do
+    answer = FactoryBot.create(:answer)
+    question = answer.question
+    user = question.user
+    visit signin_path
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    click_button "Sign in"
+    visit question_path(question)
+    click_on "Delete"
+    expect(Answer.all).to eq([])
+  end
 end
