@@ -57,6 +57,9 @@ class QuestionsController < ApplicationController
       @question.votes.each do |vote|
         vote.destroy
       end
+      @question.answers.each do |answer|
+        answer.destroy
+      end
       @question.destroy
       flash[:notice] = "Question deleted successfully!"
       redirect_to questions_path
