@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   post '/signin' => 'sessions#create'
   get '/signout' => 'sessions#destroy'
 
-  resources :questions
+  resources :questions do
+    resources :answers, only: [:create, :edit, :update, :delete]
+  end
+
 end
