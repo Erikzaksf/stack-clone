@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :questions
   has_many :votes
+  has_many :answers
   attr_accessor :password
   validates_confirmation_of :password
   validates :user_name, :email, :presence => true, :uniqueness => true
