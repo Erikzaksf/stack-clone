@@ -37,4 +37,9 @@ describe "the authentication process" do
     click_button "Sign in"
     expect(page).to have_content("There was a problem signing in.")
   end
+
+  it "authorizes access to user-only pages" do
+    visit new_question_path
+    expect(page).to have_content("You aren't authorized to visit that page.")
+  end
 end
