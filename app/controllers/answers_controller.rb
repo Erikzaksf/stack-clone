@@ -23,6 +23,23 @@ class AnswersController < ApplicationController
     end
   end
 
+  def update
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.find(params[:id])
+    if current_user == @answer.user
+      if @answer.update(answer_params)
+        flash[:notice] = "Answer updated successfully!"
+        redirect_to question_path(@question)
+      else
+        flash[:alert] = "Something went wrong!"
+        render template: "questions/show"
+      end
+    else
+      flash[:alert] = "You aren't authorized to do that."
+      redirect_to question_path(@question)
+    end
+  end
+
   private
     def answer_params
       params.require(:answer).permit(:content)
