@@ -11,24 +11,31 @@
     method: "delete"
     } %>
 <% end %>
-<h2>Answers:</h2>
-
-<% if @question.answers.any? %>
-  <% @question.answers.each do |answer| %>
-    <% if answer.id %>
-      <div class="">
-        <h4> <%= answer.user.user_name %> </h4>
-        <p> <%= answer.content %> </p>
-      </div>
-    <% end %>
-  <% end %>
-<% else %>
-  <h3>There are no answers to this question yet.</h3>
-<%end%>
 
 <% if current_user %>
+  <h2>Answers:</h2>
+
+  <% if @question.answers.any? %>
+    <% @question.answers.each do |answer| %>
+      <% if answer.id %>
+        <div class="">
+          <h4> <%= answer.user.user_name %> </h4>
+          <p> <%= answer.content %> </p>
+          <% if answer.user == current_user %>
+            <%= link_to "Edit", edit_question_answer_path(@question, answer) %> |
+            <%= link_to "Delete", question_answer_path(@question, answer), data: {
+              confirm: "This will permanently delete this answer. Are you sure?",
+              method: "delete"
+              } %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <h3>There are no answers to this question yet.</h3>
+  <%end%>
   <h3>Add an Answer</h3>
   <%= render "answers/form" %>
 <% else %>
-  <h5><%= link_to "Sign in", signin_path %> to post an answer. </h5>
+  <h3><%= link_to "Sign in", signin_path %> to view answers. </h3>
 <%end%>
