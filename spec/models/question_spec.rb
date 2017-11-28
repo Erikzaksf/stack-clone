@@ -8,4 +8,13 @@ describe Question do
   it { should validate_presence_of :title }
   it { should validate_presence_of :content }
 
+  describe ".recent" do
+    it "returns questions in ordear of creation date" do
+      question_one = FactoryBot.create(:question)
+      question_two = FactoryBot.create(:question, user: question_one.user)
+      question_three = FactoryBot.create(:question, user: question_one.user)
+      expect(Question.all).to eq ([question_one, question_two, question_three])
+    end
+  end
+
 end

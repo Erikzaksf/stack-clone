@@ -4,5 +4,6 @@ class Question < ActiveRecord::Base
   has_many :answers
   validates :user, :title, :content, presence: true
 
+  scope :recent, -> { order(created_at: :desc) }
 
 end
