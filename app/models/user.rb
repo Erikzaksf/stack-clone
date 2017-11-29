@@ -25,7 +25,7 @@ class User < ApplicationRecord
     Vote.where("user_id = ? AND question_id = ? AND is_upvote = true", self.id, question.id).take
   end
 
-  def has_downvoted_question?(question)
-    return Vote.where("user_id = ? AND question_id = ? AND is_upvote = false", self.id, question.id).any?
+  def question_downvote(question)
+    return Vote.where("user_id = ? AND question_id = ? AND is_upvote = false", self.id, question.id).take
   end
 end
