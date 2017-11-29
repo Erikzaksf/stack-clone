@@ -11,19 +11,19 @@
 * Answers:
   * Logged in Users can create/edit/read/delete answers
   * Logged out users cannot see/interact with answers
-
-### To Do:
 * Votes:
-  * Up and Downvotes
+    * Up and Downvotes for questions
+* Scopes
+  * Sort questions by most recent
+  * Show number of daily questions/answers
+### To Do:
+* Votes
   * One vote per user per question/answer
-  * Users can vote on questions
   * Users can vote on answers
 * Answers:
   * Best answer
 * Scopes
-  * Sort questions by most recent
   * Sort questions/answers by highest voted
-  * Show number of daily questions/answers
 * Admin:
   * see all user accounts
   * make more admins
