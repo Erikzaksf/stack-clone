@@ -22,6 +22,14 @@ class VotesController < ApplicationController
   end
 
   def destroy
+    @vote = Vote.find(params[:id])
+    @question = @vote.question
+    if current_user == @vote.user
+      @vote.destroy
+    else
+      flash[:alert] = "You aren't authorized to do that."
+    end
+    redirect_to question_path(@question)
   end
 private
   def vote_params

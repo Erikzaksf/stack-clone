@@ -9,16 +9,6 @@
 <% if @questions.any? %>
   <% @questions.each do |question| %>
     <div class="question-title">
-      <% if current_user %>
-        <%= form_for [question, question.votes.new] do |f| %>
-          <%= f.hidden_field :is_upvote, value: true %>
-          <%= f.submit "Upvote" %>
-        <% end %>
-        <%= form_for [question, question.votes.new] do |f| %>
-          <%= f.hidden_field :is_upvote, value: false %>
-          <%= f.submit "Downvote" %>
-        <% end %>
-      <% end %>
       <h3><%= link_to question.title, question_path(question) %></h3>
     </div>
   <% end %>

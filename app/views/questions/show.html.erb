@@ -6,9 +6,15 @@
 
 <h4><%= @question.score %> Votes</h4>
 <% if current_user %>
-  <%= form_for [@question, @question.votes.new] do |f| %>
-    <%= f.hidden_field :is_upvote, value: true %>
-    <%= f.submit "Upvote" %>
+  <% if current_user.question_upvote(@question) %>
+    <%= link_to "Remove Upvote", question_vote_path(@question, current_user.question_upvote(@question)), data: {
+      method: "delete"
+      } %>
+  <% else %>
+    <%= form_for [@question, @question.votes.new] do |f| %>
+      <%= f.hidden_field :is_upvote, value: true %>
+      <%= f.submit "Upvote" %>
+    <% end %>
   <% end %>
   <%= form_for [@question, @question.votes.new] do |f| %>
     <%= f.hidden_field :is_upvote, value: false %>
