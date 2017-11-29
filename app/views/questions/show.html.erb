@@ -4,6 +4,18 @@
 <h4>Asked by <%= @question.user.user_name %></h4>
 <p><%= @question.content %></p>
 
+<h4><%= @question.score %> Votes</h4>
+<% if current_user %>
+  <%= form_for [@question, @question.votes.new] do |f| %>
+    <%= f.hidden_field :is_upvote, value: true %>
+    <%= f.submit "Upvote" %>
+  <% end %>
+  <%= form_for [@question, @question.votes.new] do |f| %>
+    <%= f.hidden_field :is_upvote, value: false %>
+    <%= f.submit "Downvote" %>
+  <% end %>
+<% end %>
+
 <% if current_user == @question.user %>
   <%= link_to "Edit", edit_question_path(@question) %> |
   <%= link_to "Delete", question_path(@question), data: {

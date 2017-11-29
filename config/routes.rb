@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   resources :questions do
     resources :answers, only: [:create, :edit, :update, :destroy]
+    resources :votes, only: [:create, :update, :destroy]
   end
 
+  resources :answers, only: [] do
+    resources :votes, only: [:create, :update, :destroy]
+  end
 end
